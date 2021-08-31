@@ -1,0 +1,10 @@
+---
+- name: start or stop the services
+  hosts: all
+  tasks:
+   - name: install the service
+     yum: name=httpd state=installed 
+     when: ansible_python_version == "2.7.18"
+   - name: start the services
+     service: name=httpd state=started
+     when: ansible_host == "ansible_client2"

@@ -1,0 +1,12 @@
+---
+- name: ignoring errors
+  hosts: all
+  tasks:
+   - name: find the file
+     command: ls -l /tmp/file1
+     ignore_errors: yes
+   - name: create user
+     user: name={{ item }} state=present
+     with_items:
+      - test1
+      - test2

@@ -1,0 +1,19 @@
+---
+- name: project1
+  hosts: all
+  tasks: 
+   - name: find the file
+     command: ls -l /tmp/file 
+     ignore_errors: yes
+   - name: creating the file
+     file: name=/tmp/file1 state=touch
+     tags: file1
+   - name: create a directory
+     file: name=/tmp/ram state=directory
+     tags: dir
+   - name: creating users
+     user: name={{ item }} state=present
+     with_items:
+      - testuser1
+      - testuser2
+      - testuser3

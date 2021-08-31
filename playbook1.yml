@@ -1,0 +1,10 @@
+---
+- name: playbook1
+  hosts: dev_server
+  tasks:
+   - name: install the http service
+     yum: name=httpd state=installed
+   - name: start the http service
+     service: name=httpd state=started
+   - name: status of the service
+     command: systemctl status httpd       
