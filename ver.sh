@@ -14,7 +14,7 @@ if [ -z $VERSION ];then
 fi
 
 #replace . with space so can split into an array
-VERSION_BITS=(${VERSION//./ })
+VERSION_BITS=(${VERSION//./. })
 
 #get number parts and increase last one by 1
 VNUM1=${VERSION_BITS[0]}
@@ -38,3 +38,4 @@ if [ -z "$CURRENT_COMMIT_TAG" ]; then
 else
     echo "This commit is already tagged as: $CURRENT_COMMIT_TAG"
 fi
+
