@@ -1,10 +1,13 @@
 #!/bin/bash
+major=1.0
+minor=16
+fix=1
 
 #get highest tag number
 VERSION=`git describe --abbrev=0 --tags 2>/dev/null`
 
 if [ -z $VERSION ];then
-    NEW_TAG="1.0.16.0"
+    NEW_TAG="$major.$minor.$fix"
     echo "No tag present."
     echo "Creating tag: $NEW_TAG"
     git tag $NEW_TAG
@@ -14,7 +17,7 @@ if [ -z $VERSION ];then
 fi
 
 #replace . with space so can split into an array
-VERSION_BITS=(${VERSION/./ })
+VERSION_BITS=(${VERSION//./ })
 
 #get number parts and increase last one by 1
 VNUM1=${VERSION_BITS[0]}
